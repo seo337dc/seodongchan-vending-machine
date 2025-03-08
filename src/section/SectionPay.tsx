@@ -1,3 +1,5 @@
+import { styled } from "styled-components";
+
 type TProps = {
   moveCash: () => void;
   moveCard: () => void;
@@ -5,22 +7,28 @@ type TProps = {
 const SectionPay = ({ moveCash, moveCard }: TProps) => {
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">결제 방식 </h2>
-      <div className="mt-2">
-        <button
-          className="m-1 p-2 border rounded bg-blue-200 hover:bg-blue-300"
-          onClick={moveCash}
-        >
-          현금 결제
-        </button>
-        <button
-          onClick={moveCard}
-          className="m-1 p-2 border rounded bg-blue-200 hover:bg-blue-300"
-        >
-          카드 결제
-        </button>
-      </div>
+      <h2>결제 방식 </h2>
+      <BtnContainer>
+        <Button onClick={moveCash}>현금 결제</Button>
+        <Button onClick={moveCard}>카드 결제</Button>
+      </BtnContainer>
     </div>
   );
 };
 export default SectionPay;
+
+const BtnContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+`;
+
+const Button = styled.button`
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+`;

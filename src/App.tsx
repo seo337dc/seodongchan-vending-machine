@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
 import "./App.css";
 import SectionPay from "./section/SectionPay";
@@ -51,6 +52,8 @@ function App() {
     setBalance((prev) => prev + amount);
   };
 
+  const resetMoney = () => setBalance(0);
+
   const onPayment = (selectDrink: Drink) => {
     if (payType === "card") {
       alert("결제 완료하였습니다.");
@@ -83,18 +86,42 @@ function App() {
           <SectionPay moveCash={moveCash} moveCard={moveCard} />
         )}
 
-        {section === 2 && <SectionBalance insertMoney={insertMoney} />}
+        {section === 2 && (
+          <SectionBalance insertMoney={insertMoney} resetMoney={resetMoney} />
+        )}
         {section === 3 && (
           <SectionDrink balance={balance} onPayment={onPayment} />
         )}
       </div>
 
-      <div className="mt-2">
-        {section !== 1 && <button onClick={moveBack}>이전</button>}
-        {section !== 3 && <button onClick={moveNext}>다음</button>}
-      </div>
+      <ButtonContainer>
+        {section !== 1 && <Button onClick={moveBack}>이전</Button>}
+        {section !== 3 && <Button onClick={moveNext}>다음</Button>}
+      </ButtonContainer>
     </div>
   );
 }
 
 export default App;
+
+const ButtonContainer = styled.div`
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+`;
+
+const Button = styled.button`
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #2980b9;
+  }
+`;
