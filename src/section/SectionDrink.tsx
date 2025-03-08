@@ -6,6 +6,8 @@ export type Drink = {
   price: number;
 };
 
+export type PayTypes = "cash" | "card" | "";
+
 const drinks: Drink[] = [
   { name: "Cola", price: 1100 },
   { name: "Water", price: 600 },
@@ -15,16 +17,17 @@ const drinks: Drink[] = [
 type TProps = {
   balance: number;
   onPayment: (selectDrink: Drink) => void;
+  payType: PayTypes;
 };
-const SectionDrink = ({ balance, onPayment }: TProps) => {
+const SectionDrink = ({ balance, onPayment, payType }: TProps) => {
   const [message, setMessage] = useState("");
   const [selectDrink, setSelectDrink] = useState<Drink | null>(null);
 
-  const onSelectDrink = (drinkName: string, paymentMethod: string) => {
+  const onSelectDrink = (drinkName: string) => {
     const drink = drinks.find((d) => d.name === drinkName);
     if (!drink) return;
 
-    if (paymentMethod === "cash" && balance < drink.price) {
+    if (payType === "cash" && balance < drink.price) {
       setMessage("잔액이 부족합니다.");
       return;
     }
@@ -46,10 +49,7 @@ const SectionDrink = ({ balance, onPayment }: TProps) => {
       <h3>음료 선택</h3>
       <BtnContainer>
         {drinks.map((drink) => (
-          <Button
-            key={drink.name}
-            onClick={() => onSelectDrink(drink.name, "cash")}
-          >
+          <Button key={drink.name} onClick={() => onSelectDrink(drink.name)}>
             {drink.name} ({drink.price}원)
           </Button>
         ))}

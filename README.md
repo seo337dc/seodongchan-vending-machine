@@ -27,3 +27,8 @@ npm run start
 ## 다이어그램
 
 ![flow](./public/dialgram.png)
+
+## 문서
+
+- png 파일 형태의 다이얼그램
+- public/dialgram.png
