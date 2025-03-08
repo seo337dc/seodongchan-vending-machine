@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { styled } from "styled-components";
 
 export type Drink = {
   name: string;
@@ -41,17 +42,18 @@ const SectionDrink = ({ balance, onPayment }: TProps) => {
   };
 
   return (
-    <div className="mt-2">
-      <h3 className="font-semibold">음료 선택</h3>
-      {drinks.map((drink) => (
-        <button
-          key={drink.name}
-          className="m-1 p-2 border rounded bg-blue-200 hover:bg-blue-300"
-          onClick={() => onSelectDrink(drink.name, "cash")}
-        >
-          {drink.name} ({drink.price}원)
-        </button>
-      ))}
+    <div>
+      <h3>음료 선택</h3>
+      <BtnContainer>
+        {drinks.map((drink) => (
+          <Button
+            key={drink.name}
+            onClick={() => onSelectDrink(drink.name, "cash")}
+          >
+            {drink.name} ({drink.price}원)
+          </Button>
+        ))}
+      </BtnContainer>
 
       {selectDrink && (
         <h4>
@@ -60,9 +62,7 @@ const SectionDrink = ({ balance, onPayment }: TProps) => {
         </h4>
       )}
 
-      <div>
-        <button onClick={handlePayment}>결제하기</button>
-      </div>
+      <ButtonPayment onClick={handlePayment}>결제하기</ButtonPayment>
 
       <p>{message}</p>
     </div>
@@ -70,3 +70,30 @@ const SectionDrink = ({ balance, onPayment }: TProps) => {
 };
 
 export default SectionDrink;
+
+const BtnContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+`;
+
+const Button = styled.button`
+  background-color: #3e5d1a;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+`;
+
+const ButtonPayment = styled.button`
+  margin: 10px 0;
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+`;
