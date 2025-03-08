@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import "./App.css";
-import SectionPay from "./section/SectionPay";
+import SectionPayCheck from "./section/SectionPayCheck";
 import SectionBalance from "./section/SectionBalance";
-import SectionDrink, { Drink } from "./section/SectionDrink";
+import SectionDrink, { Drink, PayTypes } from "./section/SectionDrink";
+
+import "./App.css";
 
 function App() {
   const [balance, setBalance] = useState(0);
   const [section, setSection] = useState(1);
-  const [payType, setPayType] = useState<"cash" | "card" | "">("");
+  const [payType, setPayType] = useState<PayTypes>("");
 
   const moveCash = () => {
     setPayType("cash");
@@ -56,7 +57,8 @@ function App() {
 
   const onPayment = (selectDrink: Drink) => {
     if (payType === "card") {
-      alert("결제 완료하였습니다.");
+      alert("카드 결제 완료하였습니다.");
+      setSection(1);
       return;
     }
 
@@ -83,14 +85,18 @@ function App() {
 
       <div className="flex">
         {section === 1 && (
-          <SectionPay moveCash={moveCash} moveCard={moveCard} />
+          <SectionPayCheck moveCash={moveCash} moveCard={moveCard} />
         )}
 
         {section === 2 && (
           <SectionBalance insertMoney={insertMoney} resetMoney={resetMoney} />
         )}
         {section === 3 && (
-          <SectionDrink balance={balance} onPayment={onPayment} />
+          <SectionDrink
+            balance={balance}
+            onPayment={onPayment}
+            payType={payType}
+          />
         )}
       </div>
 

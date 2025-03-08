@@ -4,7 +4,7 @@ type TProps = {
   moveCash: () => void;
   moveCard: () => void;
 };
-const SectionPay = ({ moveCash, moveCard }: TProps) => {
+const SectionPayCheck = ({ moveCash, moveCard }: TProps) => {
   return (
     <div>
       <h2>결제 방식 </h2>
@@ -15,7 +15,7 @@ const SectionPay = ({ moveCash, moveCard }: TProps) => {
     </div>
   );
 };
-export default SectionPay;
+export default SectionPayCheck;
 
 const BtnContainer = styled.div`
   display: flex;

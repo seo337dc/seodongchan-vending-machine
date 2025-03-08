@@ -1,46 +1,34 @@
-# Getting Started with Create React App
+# 과제 결과 및 내용
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 사용한 기술 스택
 
-## Available Scripts
+- Framework: Next.js
+- Core : Typescript
+- Styles : Styled-Component
 
-In the project directory, you can run:
+## 실행방법
 
-### `npm start`
+```shell
+npm install
+npm run build
+npm run start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 자판기 동작 흐름도
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. 사용자가 현금 혹은 카드 결제방식을 선택한다.
+2. 현금을 선택한 경우, 금액 투입 화면에서 금액 넣을 수 있다.
+3. 금액을 투입한 후, 음료를 선택화면으로 이동한다.
+4. 결제방식을 카드로 선택한 경우, 음료 선택화면으로 바로 이동한다.
+5. 현금 결제 할 경우, 선택한 음료의 금액이 되지 않으면 금액 부족이라는 메세지가 노출된다.
+6. 현금 결제가 되면, 결제를 완료하고 다시 현금 화면으로 이동한다. 단, 잔돈은 그대로 유지한다.
+7. 카드로 결제한 경우, 바로 결제가 완료된다.
 
-### `npm test`
+## 다이어그램
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![flow](./public/dialgram.png)
 
-### `npm run build`
+## 문서
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- png 파일 형태의 다이얼그램
+- public/dialgram.png
